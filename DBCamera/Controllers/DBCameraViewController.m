@@ -90,7 +90,8 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
                                                  name:UIApplicationDidEnterBackgroundNotification object:nil];
 
     NSError *error;
-    if ( [self.cameraManager setupSessionWithPreset:AVCaptureSessionPresetPhoto error:&error] ) {
+    if ( [self.cameraManager setupSessionWithPreset:AVCaptureSessionPreset640x480 error:&error] ) {
+        NSLog(@"USANDO CAMBIO");
         if ( self.customCamera ) {
             if ( [self.customCamera respondsToSelector:@selector(previewLayer)] ) {
                 [(AVCaptureVideoPreviewLayer *)[self.customCamera valueForKey:@"previewLayer"] setSession:self.cameraManager.captureSession];
@@ -110,6 +111,7 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 
 - (void)viewDidAppear:(BOOL)animated
 {
+            NSLog(@"did appear ");
     [super viewDidAppear:animated];
     [self.cameraManager performSelector:@selector(startRunning) withObject:nil afterDelay:0.0];
     
