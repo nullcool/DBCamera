@@ -37,16 +37,19 @@
 
 + (id) initWithFrame:(CGRect)frame
 {
+    NSLog(@"INSIDE INIT WITH FRAME");
     return [[self alloc] initWithFrame:frame captureSession:nil];
 }
 
 + (DBCameraView *) initWithCaptureSession:(AVCaptureSession *)captureSession
 {
+    NSLog(@"INSIDE INIT WITH CAPTURE SESSION");
     return [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds] captureSession:captureSession];
 }
 
 - (id) initWithFrame:(CGRect)frame captureSession:(AVCaptureSession *)captureSession
 {
+        NSLog(@"INSIDE INIT WITH FRAME DOS");
     self = [super initWithFrame:frame];
     
     if ( self ) {
@@ -77,6 +80,7 @@
 
 - (void) defaultInterface
 {
+        NSLog(@"DEFAULT INTERFACE");
     UIView *focusView = [[UIView alloc] initWithFrame:self.frame];
     focusView.backgroundColor = [UIColor clearColor];
     [focusView.layer addSublayer:self.focusBox];
